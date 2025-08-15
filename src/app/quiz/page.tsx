@@ -1,9 +1,11 @@
 "use client"
 import { Button } from '@/components/ui/Button'
 import { useState } from 'react'
+import { useQuizStore } from '@/lib/store'
 
 export default function QuizPage() {
 	const [started, setStarted] = useState(false)
+	const { questions, setLastScore } = useQuizStore()
 	return (
 		<div className="flex flex-col gap-4">
 			<h1 className="text-xl font-semibold">Kuis</h1>
@@ -27,13 +29,13 @@ export default function QuizPage() {
 				</form>
 			) : (
 				<div className="max-w-xl rounded-md border border-border bg-surface p-4">
-					<div className="font-medium mb-2">1. Apa ibu kota Indonesia?</div>
+					<div className="font-medium mb-2">1. {questions[0]?.question}</div>
 					<div className="grid gap-2">
-						<label className="flex items-center gap-2"><input type="radio" name="q1" /> Surabaya</label>
-						<label className="flex items-center gap-2"><input type="radio" name="q1" /> Jakarta</label>
-						<label className="flex items-center gap-2"><input type="radio" name="q1" /> Bandung</label>
+						{questions[0]?.choices.map((c, i) => (
+							<label key={i} className="flex items-center gap-2"><input type="radio" name="q1" /> {c}</label>
+						))}
 					</div>
-					<div className="mt-3"><Button>Selesai</Button></div>
+					<div className="mt-3"><Button onClick={() => setLastScore('7/10')}>Selesai</Button></div>
 				</div>
 			)}
 		</div>

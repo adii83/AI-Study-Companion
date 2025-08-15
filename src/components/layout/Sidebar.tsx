@@ -26,8 +26,8 @@ export function Sidebar() {
 						<li key={item.href}>
 							<Link
 								className={cn(
-									'flex items-center gap-3 rounded-md px-3 py-2 text-sm hover:bg-bg-subtle',
-									active && 'aria-[current=true]:bg-bg-subtle'
+									'flex items-center gap-3 rounded-md px-3 py-2 text-sm hover:bg-bg-subtle transition-colors',
+									active && 'bg-bg-subtle text-primary-600 font-medium'
 								)}
 								aria-current={active ? 'page' : undefined}
 								href={item.href}

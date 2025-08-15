@@ -25,7 +25,9 @@ export function BottomNav() {
 								aria-label={label}
 								aria-current={active ? 'page' : undefined}
 								href={href}
-								className="flex h-14 items-center justify-center gap-1 text-xs"
+								className={`flex h-14 items-center justify-center gap-1 text-xs transition-colors ${
+									active ? 'text-primary-600' : 'text-text-secondary'
+								}`}
 							>
 								<Icon className="h-5 w-5" aria-hidden="true" />
 								<span>{label}</span>
